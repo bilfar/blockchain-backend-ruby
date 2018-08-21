@@ -8,8 +8,8 @@ end
 
 require 'pg'
 
-task :initial_setup do
-  print "🎟️ Setting up databases. Please standby...\n"
+task :setup do
+  print "🎟 Setting up databases. Please standby...\n"
 
   ['blockchain', 'blockchain_test'].each do |database|
     con = PG.connect
@@ -17,12 +17,14 @@ task :initial_setup do
     con.exec("CREATE DATABASE #{database};")
 
     con = PG.connect(dbname: "#{database}")
-    con.exec('CREATE TABLE users(id SERIAL PRIMARY KEY, username VARCHAR(15), name VARCHAR(30), email VARCHAR(60), password VARCHAR(140));')
+    con.exec("CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), receiver CHAR(64), value INT, previous_tx CHAR(64));")
 
-    print "🎟️ Database '#{database}' has been set up.\n"
+    con.exec("INSERT INTO blocks(sender, receiver, value, previous_tx) VALUES ('0000000000000000000000000000000000000000000000000000000000000000', '0000000000000000000000000000000000000000000000000000000000000000', 0, '0000000000000000000000000000000000000000000000000000000000000000');")
+
+    print "🎟️Database '#{database}' and Genesis Block have been set up.\n"
   end
 
-  print "🎟️ All of your databases have been set up. Have a nice day.\n"
+  print "🎟️All of your databases have been set up. Have a nice day.\n"
 end
 
 task :nuke do
@@ -35,7 +37,7 @@ task :nuke do
     con.exec("DROP DATABASE #{database}")
     print "💀 Database '#{database}' has been nuked.\n"
   end
-  print "🎟️ All of your databases have been nuked. Have a nice day.\n"
+  print "💀️All of your databases have been nuked. Have a nice day.\n"
 end
 
 task :setup_test_database do
@@ -43,6 +45,6 @@ task :setup_test_database do
 
   con = PG.connect dbname: 'blockchain_test'
 
-  con.exec 'TRUNCATE users, peeps'
+  con.exec 'TRUNCATE blocks'
   print "🎟️ Your database tables are ready for action. Have a nice day.\n"
 end
