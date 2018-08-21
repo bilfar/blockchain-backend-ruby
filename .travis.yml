@@ -10,9 +10,3 @@ script:
 
 before_install:
 - gem install bundler
-- sudo apt-get update -qq
-- sudo apt-get install -qq postgresql-server-dev-9.3
-
-before_script:
- - psql -c 'create database blockchain_test;' -U postgres
- - psql -c 'CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), receiver CHAR(64), value INT, previous_tx CHAR(64));' -U postgres

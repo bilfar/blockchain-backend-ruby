@@ -40,11 +40,11 @@ task :nuke do
   print "💀️All of your databases have been nuked. Have a nice day.\n"
 end
 
-task :setup_test_database do
-  print "🎟️ Cleaning database tables. Please standby...\n"
-
-  con = PG.connect dbname: 'blockchain_test'
-
-  con.exec 'TRUNCATE blocks'
-  print "🎟️ Your database tables are ready for action. Have a nice day.\n"
-end
+# task :setup_test_database do
+#   print "🎟️ Cleaning database tables. Please standby...\n"
+#
+#   con = PG.connect dbname: 'blockchain_test'
+#
+#   con.exec 'TRUNCATE blocks'
+#   print "🎟️ Your database tables are ready for action. Have a nice day.\n"
+# end

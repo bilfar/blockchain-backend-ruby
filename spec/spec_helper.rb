@@ -1,10 +1,7 @@
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 
-require 'rake'
 require 'rspec'
-
-Rake.application.load_rakefile
 
 RSpec.configure do |config|
 
@@ -16,10 +13,6 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  config.before(:each) do
-    Rake::Task['setup_test_database'].execute
-  end
-
   config.shared_context_metadata_behavior = :apply_to_host_groups
-  
+
 end
