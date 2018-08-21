@@ -7,3 +7,4 @@ git_source(:github) {|repo_name| "https://github.com/archmagos/blockchain-backen
 
 # gem 'simplecov'
 # gem 'simplecov-console'
+gem 'rake'
