@@ -5,5 +5,5 @@ source "https://rubygems.org"
 git_source(:github) {|repo_name| "https://github.com/archmagos/blockchain-backend-ruby" }
 
 
-gem 'simplecov'
-gem 'simplecov-console'
+# gem 'simplecov'
+# gem 'simplecov-console'
