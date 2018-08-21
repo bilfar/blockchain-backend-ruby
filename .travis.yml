@@ -1,3 +1,11 @@
 language: ruby
 rvm:
  - 2.5.0
+
+
+after_script:
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+install:
+- bundle install
+before_install:
+- gem install bundler
