@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-
     ansi (1.5.0)
     ast (2.4.0)
     diff-lcs (1.3)
@@ -63,11 +62,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-
-
-BUNDLED WITH
-   1.16.3
-
   pg
   rake
   rspec
@@ -80,4 +74,5 @@ BUNDLED WITH
 RUBY VERSION
    ruby 2.5.0p0
 
-
+BUNDLED WITH
+   1.16.4
