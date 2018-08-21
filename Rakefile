@@ -17,8 +17,8 @@ task :setup do
     con.exec("CREATE DATABASE #{database};")
 
     con = PG.connect(dbname: "#{database}")
-    con.exec("CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), receiver CHAR(64), value INT, previous_tx CHAR(64));")
 
+    con.exec("CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), receiver CHAR(64), value INT, previous_tx CHAR(64));")
     con.exec("INSERT INTO blocks(sender, receiver, value, previous_tx) VALUES ('0000000000000000000000000000000000000000000000000000000000000000', '0000000000000000000000000000000000000000000000000000000000000000', 0, '0000000000000000000000000000000000000000000000000000000000000000');")
 
     print "🎟️Database '#{database}' and Genesis Block have been set up.\n"
@@ -40,11 +40,11 @@ task :nuke do
   print "💀️All of your databases have been nuked. Have a nice day.\n"
 end
 
-# task :setup_test_database do
-#   print "🎟️ Cleaning database tables. Please standby...\n"
-#
-#   con = PG.connect dbname: 'blockchain_test'
-#
-#   con.exec 'TRUNCATE blocks'
-#   print "🎟️ Your database tables are ready for action. Have a nice day.\n"
-# end
+task :setup_test_database do
+  print "🎟️ Cleaning database tables. Please standby...\n"
+
+  con = PG.connect dbname: 'blockchain_test'
+
+  con.exec 'TRUNCATE blocks'
+  print "🎟️ Your database tables are ready for action. Have a nice day.\n"
+end

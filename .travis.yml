@@ -2,22 +2,22 @@ env:
   global:
     - CC_TEST_REPORTER_ID=692ef5f21397d11ce82dd53b0702e715970a2709638f9088eca328513f792788
 language: ruby
-
-rvm: '2.5.0'
-
-install:
-- bundle install
-
-script:
- - mkdir -p spec && bundle exec rspec spec
-
-before_script:
- - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
- - chmod +x ./cc-test-reporter
- - ./cc-test-reporter before-build
-
+rvm:
+  - 2.5.0
+services:
+  - postgresql
 before_install:
-- gem install bundler
-
+  - gem install bundler
+notifications:
+  - false
+before_script:
+  - psql -c 'create database blockchain_test;' -U postgres
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+scripts:
+  - mkdir -p spec && bundle exec rspec spec
+install:
+  - bundle install
 after_script:
  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
