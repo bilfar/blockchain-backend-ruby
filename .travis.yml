@@ -17,6 +17,7 @@ before_script:
   - ./cc-test-reporter before-build
 scripts:
   - mkdir -p spec && bundle exec rspec spec
+  - rake setup_travis_database
 install:
   - bundle install
 after_script:

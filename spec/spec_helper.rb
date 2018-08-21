@@ -15,7 +15,7 @@ SimpleCov.start
 
 RSpec.configure do |config|
   config.before(:each) do
-    Rake::Task['setup_test_database'].execute
+    Rake::Task['clean_test_database'].execute
   end
 
   config.expect_with :rspec do |expectations|
