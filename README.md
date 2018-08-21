@@ -1,17 +1,25 @@
 # Blockchain Backend (Ruby)
-A block-chain based ticketing app that allows users to purchase (concert) tickets and stores the transaction in the decentralised ethereum network
+Travis badge / Code Coverage / Code Quality badges here
+A blockchain based ticketing app that allows users to purchase concert tickets and stores the validated transactions on a blockchain network. Created as part of our final project for the Makers Academy bootcamp during August 2018.
+This repository represents the back-end 'blockchain' element to our project, while the Javascript/React front-end repository [can be found here](). Our initial MVP is to set up a 'dummy' blockchain that mimics the way this technology processes and validates transactions. These transactions will then be sent to our 'chain', a basic Postgres database.
+Once our MVP has been met, we hope to remove the Ruby back-end and replace it with a decentralised system built on the Ethereum network.
 
+You can [read our full project log here]().
 
-Summary/Process/Approach/ImplementedFunctionality/Approach to solving the problem:
+## How to use
+Our Ruby back-end server has no user interface, although it needs to be run in conjunction with the web front-end.
+Please download or clone our repository, and navigate to the root directory.
+```
+> bundle install # installs project dependencies
+> 
+```
 
+### Initial MVP
+* Project setup ( Trello, Github, Travis CI, Heroku, Simplecov, Linter)
+* A simple app that allows a user to see available concert tickets and make a purchase.
+* A 'dummy' blockchain built on Ruby that sends ticket transactions to a Postgres database.
 
-## Specification
-
-### MVP
-Project setup ( Trello, Github, Travis, Heroku, Coverage checkers, Linter)
-A simple app that allows a user to see available concert tickets and make a purchase. Initially this will be stored in a 'mock blockchain' i.e. a database.
-
-### First Sprint
+### First Sprint (21-22 August)
 ```
 As a frequent concert goer,
 So that I can see what concerts are available,
@@ -28,28 +36,11 @@ So that I can get into the concert,
 I want a confirmation with my ticket number
 ```
 
-
 ## Technologies used
-
-
 | Stack    | Technologies Used | Test Suites |
 | -------- | ----------------- | ----------- |
-| BackEnd - dummy blockchain   | Ruby, Sinatra     | Rspec       |
+| BackEnd - Dummy blockchain   | Ruby, Sinatra     | Rspec       |
 | BackEnd - Blockchain         | Ethereum, Solidity     | Truffle       |
-
-
-## How Launching the Application
-
-Setup/Dependencies
-
-Get started
-
-List of commands:
-
-Running tests
-
-## Test coverage
-
 
 ## Learning Outcomes
 Learning Objectives
