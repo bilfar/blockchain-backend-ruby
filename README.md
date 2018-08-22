@@ -9,10 +9,12 @@ You can [read our full project log here](https://hackmd.io/FugFiGBnQ0ivaJpLaANYh
 
 ## How to use
 Our Ruby back-end server has no user interface, although it needs to be run in conjunction with the web front-end.
-Please download or clone our repository, and navigate to the root directory. The following commands will install project dependencies and host our back-end on http://localhost:9292
+Please download or clone our repository, and navigate to the root directory. The following commands will install project dependencies and host our back-end on http://localhost:9292 (please note that this server is purely backend, so visiting the index route will result in a 404 response)
 ```
 > bundle install
+> rake setup
 > rackup
+> rspec # For running tests
 ```
 
 ### Initial MVP
