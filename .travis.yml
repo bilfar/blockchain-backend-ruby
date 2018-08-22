@@ -12,12 +12,12 @@ notifications:
   - false
 before_script:
   - psql -c 'create database blockchain_test;' -U postgres
+  - rake setup_travis_database
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 scripts:
   - mkdir -p spec && bundle exec rspec spec
-  - rake setup_travis_database
 install:
   - bundle install
 after_script:
