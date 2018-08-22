@@ -1,17 +1,26 @@
 # Blockchain Backend (Ruby)
-A block-chain based ticketing app that allows users to purchase (concert) tickets and stores the transaction in the decentralised ethereum network
+[![Build Status](https://travis-ci.com/archmagos/blockchain-backend-ruby.svg?branch=development)](https://travis-ci.com/archmagos/blockchain-backend-ruby) [![Maintainability](https://api.codeclimate.com/v1/badges/8fb0dd85e11fc6c6333c/maintainability)](https://codeclimate.com/github/archmagos/blockchain-backend-ruby/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/8fb0dd85e11fc6c6333c/test_coverage)](https://codeclimate.com/github/archmagos/blockchain-backend-ruby/test_coverage)
 
+A blockchain-based ticketing app that allows users to purchase concert tickets and stores the validated transactions on a blockchain network. Created as part of our final project for the Makers Academy bootcamp during August 2018.
+This repository represents the back-end 'blockchain' element to our project, while the Javascript/React front-end repository [can be found here](https://github.com/jeff1108/blockchain-ticketing-app). Our initial MVP is to set up a 'dummy' blockchain that mimics the way this technology processes and validates transactions. These transactions will then be sent to our 'chain', a basic Postgres database.
+Once our MVP has been met, we hope to remove the Ruby back-end and replace it with a decentralised system built on the Ethereum network.
 
-Summary/Process/Approach/ImplementedFunctionality/Approach to solving the problem:
+You can [read our full project log here](https://hackmd.io/FugFiGBnQ0ivaJpLaANYhQ).
 
+## How to use
+Our Ruby back-end server has no user interface, although it needs to be run in conjunction with the web front-end.
+Please download or clone our repository, and navigate to the root directory. The following commands will install project dependencies and host our back-end on http://localhost:9292
+```
+> bundle install
+> rackup
+```
 
-## Specification
+### Initial MVP
+* Project setup ( Trello, Github, Travis CI, Heroku, Simplecov, Linter)
+* A simple app that allows a user to see available concert tickets and make a purchase.
+* A 'dummy' blockchain built on Ruby that sends ticket transactions to a Postgres database.
 
-### MVP
-Project setup ( Trello, Github, Travis, Heroku, Coverage checkers, Linter)
-A simple app that allows a user to see available concert tickets and make a purchase. Initially this will be stored in a 'mock blockchain' i.e. a database.
-
-### First Sprint
+### First Sprint (21-22 August)
 ```
 As a frequent concert goer,
 So that I can see what concerts are available,
@@ -28,34 +37,17 @@ So that I can get into the concert,
 I want a confirmation with my ticket number
 ```
 
-
 ## Technologies used
-
-
 | Stack    | Technologies Used | Test Suites |
 | -------- | ----------------- | ----------- |
-| BackEnd - dummy blockchain   | Ruby, Sinatra     | Rspec       |
+| BackEnd - Dummy blockchain   | Ruby, Sinatra     | Rspec       |
 | BackEnd - Blockchain         | Ethereum, Solidity     | Truffle       |
 
-
-## How Launching the Application
-
-Setup/Dependencies
-
-Get started
-
-List of commands:
-
-Running tests
-
-## Test coverage
-
-
 ## Learning Outcomes
-Learning Objectives
+To be completed at end of project
 
 ## Future/Further Improvements
-What I would do next
+To be completed at end of project
 
 ## Authors/Credits
 * [Ben Luke Smith-Gordon](https://github.com/Ben-893)
