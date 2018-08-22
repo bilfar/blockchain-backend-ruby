@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'helpers'
+require_relative './helpers.rb'
 require 'pg'
 
 class Block
