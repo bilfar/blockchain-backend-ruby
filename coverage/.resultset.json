@@ -1,19 +1,75 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/fred/Documents/MakersAcademy/week_11/blockchain-backend-ruby/spec/test_spec.rb": [
+      "/Users/fred/Documents/MakersAcademy/week_11/blockchain-backend-ruby/spec/block_spec.rb": [
         null,
         null,
         1,
         null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
         null,
         1,
         1,
         1,
+        1,
         null,
+        null,
+        null,
+        null
+      ],
+      "/Users/fred/Documents/MakersAcademy/week_11/blockchain-backend-ruby/lib/block.rb": [
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        2,
+        2,
+        3,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/fred/Documents/MakersAcademy/week_11/blockchain-backend-ruby/lib/helpers.rb": [
+        1,
+        null,
+        1,
+        3,
+        3,
         null
       ]
     },
-    "timestamp": 1534927720
+    "timestamp": 1534955900
   }
 }
