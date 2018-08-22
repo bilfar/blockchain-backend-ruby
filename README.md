@@ -1,6 +1,6 @@
 # Blockchain Backend (Ruby)
 Travis badge / Code Coverage / Code Quality badges here
-A blockchain based ticketing app that allows users to purchase concert tickets and stores the validated transactions on a blockchain network. Created as part of our final project for the Makers Academy bootcamp during August 2018.
+A blockchain-based ticketing app that allows users to purchase concert tickets and stores the validated transactions on a blockchain network. Created as part of our final project for the Makers Academy bootcamp during August 2018.
 This repository represents the back-end 'blockchain' element to our project, while the Javascript/React front-end repository [can be found here](). Our initial MVP is to set up a 'dummy' blockchain that mimics the way this technology processes and validates transactions. These transactions will then be sent to our 'chain', a basic Postgres database.
 Once our MVP has been met, we hope to remove the Ruby back-end and replace it with a decentralised system built on the Ethereum network.
 
@@ -8,10 +8,10 @@ You can [read our full project log here]().
 
 ## How to use
 Our Ruby back-end server has no user interface, although it needs to be run in conjunction with the web front-end.
-Please download or clone our repository, and navigate to the root directory.
+Please download or clone our repository, and navigate to the root directory. The following commands will install project dependencies and host our back-end on http://localhost:9292
 ```
-> bundle install # installs project dependencies
-> 
+> bundle install
+> rackup
 ```
 
 ### Initial MVP
