@@ -1,8 +1,7 @@
+# frozen_string_literal: true
+
 require 'sinatra'
 
 # Understands sending and receiving transaction hashes
-class HelloWorldApp < Sinatra::Base
-  get '/' do
-    'Hello, world!'
-  end
+class BlockchainApp < Sinatra::Base
 end

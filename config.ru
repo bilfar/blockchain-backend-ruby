@@ -1,2 +1,5 @@
+# frozen_string_literal: true
+
 require './app'
-run HelloWorldApp
+
+run BlockchainApp

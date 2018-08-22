@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 
@@ -8,9 +10,7 @@ require 'simplecov-console'
 
 Rake.application.load_rakefile
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
- SimpleCov::Formatter::Console,
-])
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::Console])
 SimpleCov.start
 
 RSpec.configure do |config|
