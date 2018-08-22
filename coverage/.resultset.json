@@ -2,8 +2,9 @@
   "RSpec": {
     "coverage": {
       "/Users/fred/Documents/MakersAcademy/week_11/blockchain-backend-ruby/spec/test_spec.rb": [
-        1,
         null,
+        null,
+        1,
         null,
         null,
         1,
@@ -13,6 +14,6 @@
         null
       ]
     },
-    "timestamp": 1534873592
+    "timestamp": 1534927720
   }
 }
