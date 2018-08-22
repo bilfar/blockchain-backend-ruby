@@ -1,10 +1,10 @@
 # Blockchain Backend (Ruby)
-Travis badge / Code Coverage / Code Quality badges here
+[![Build Status](https://travis-ci.com/archmagos/blockchain-backend-ruby.svg?branch=development)](https://travis-ci.com/archmagos/blockchain-backend-ruby) [![Maintainability](https://api.codeclimate.com/v1/badges/8fb0dd85e11fc6c6333c/maintainability)](https://codeclimate.com/github/archmagos/blockchain-backend-ruby/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/8fb0dd85e11fc6c6333c/test_coverage)](https://codeclimate.com/github/archmagos/blockchain-backend-ruby/test_coverage)
 A blockchain-based ticketing app that allows users to purchase concert tickets and stores the validated transactions on a blockchain network. Created as part of our final project for the Makers Academy bootcamp during August 2018.
-This repository represents the back-end 'blockchain' element to our project, while the Javascript/React front-end repository [can be found here](). Our initial MVP is to set up a 'dummy' blockchain that mimics the way this technology processes and validates transactions. These transactions will then be sent to our 'chain', a basic Postgres database.
+This repository represents the back-end 'blockchain' element to our project, while the Javascript/React front-end repository [can be found here](https://github.com/jeff1108/blockchain-ticketing-app). Our initial MVP is to set up a 'dummy' blockchain that mimics the way this technology processes and validates transactions. These transactions will then be sent to our 'chain', a basic Postgres database.
 Once our MVP has been met, we hope to remove the Ruby back-end and replace it with a decentralised system built on the Ethereum network.
 
-You can [read our full project log here]().
+You can [read our full project log here](https://hackmd.io/FugFiGBnQ0ivaJpLaANYhQ).
 
 ## How to use
 Our Ruby back-end server has no user interface, although it needs to be run in conjunction with the web front-end.
@@ -43,10 +43,10 @@ I want a confirmation with my ticket number
 | BackEnd - Blockchain         | Ethereum, Solidity     | Truffle       |
 
 ## Learning Outcomes
-Learning Objectives
+To be completed at end of project
 
 ## Future/Further Improvements
-What I would do next
+To be completed at end of project
 
 ## Authors/Credits
 * [Ben Luke Smith-Gordon](https://github.com/Ben-893)
