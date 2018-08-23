@@ -23,9 +23,7 @@ task :setup do
     con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
              'receiver CHAR(64), value INT, previous_tx CHAR(64));')
     con.exec('INSERT INTO blocks(sender, receiver, value, previous_tx) VALUES' \
-     "('0000000000000000000000000000000000000000000000000000000000000000'," \
-     "'0000000000000000000000000000000000000000000000000000000000000000'," \
-     "0, '0000000000000000000000000000000000000000000000000000000000000000');")
+              "('#{'0' * 64}', '#{'0' * 64}', 0, '#{'0' * 64}');")
 
     print "🎟️Database '#{database}' and Genesis Block have been set up.\n"
   end
@@ -53,10 +51,6 @@ task :setup_travis_database do
 
   con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
            'receiver CHAR(64), value INT, previous_tx CHAR(64));')
-  con.exec('INSERT INTO blocks(sender, receiver, value, previous_tx) VALUES' \
-     "('0000000000000000000000000000000000000000000000000000000000000000'," \
-     "'0000000000000000000000000000000000000000000000000000000000000000'," \
-     "0, '0000000000000000000000000000000000000000000000000000000000000000');")
 end
 
 task :clean_test_database do
@@ -65,5 +59,14 @@ task :clean_test_database do
   con = PG.connect dbname: 'blockchain_test'
 
   con.exec 'TRUNCATE blocks'
-  print "🎟️ Your database tables are ready for action. Have a nice day.\n"
+  print "🎟️ Your database tables are ready for action.\n"
+end
+
+task :insert_genesis_block do
+  @con = PG.connect dbname: 'blockchain_test'
+
+  @con.exec('INSERT INTO blocks(sender, receiver, value, previous_tx) VALUES' \
+            "('#{'0' * 64}', '#{'0' * 64}', 0, '#{'0' * 64}');")
+
+  print "🎟️ Genesis Block inserted into test database.\n"
 end

@@ -1,6 +1,12 @@
+# frozen_string_literal: true
+
 require 'pg'
 
 def switch_db_if_test_env
-  ENV['ENVIRONMENT'] == 'test' ? dbname = 'blockchain_test' : dbname = 'blockchain'
-  @con = PG.connect :dbname => "#{dbname}"
+  if ENV['ENVIRONMENT'] == 'test'
+    dbname = 'blockchain_test'
+  else
+    dbname = 'blockchain'
+  end
+  @con = PG.connect dbname: "#{dbname}"
 end
