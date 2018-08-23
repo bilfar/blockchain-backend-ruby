@@ -22,4 +22,11 @@ describe Block do
       expect(Block.prev_tx_hash).to eq('0' * 64)
     end
   end
+
+  describe '.hash_block' do
+    it 'initializes block with a hash value' do
+      block = Block.create('0', '0', 5)
+      expect(block.instance_variable_get('@hash').length).to eq 64
+    end
+  end
 end

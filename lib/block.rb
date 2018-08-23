@@ -13,6 +13,7 @@ class Block
     @receiver = receiver
     @value = value
     @previous_tx = previous_tx
+    @hash = get_hash
   end
 
   def self.all
@@ -46,6 +47,10 @@ class Block
   end
 
   private
+
+  def get_hash
+    '0' * 64
+  end
 
   def ==(other)
     @id == other.id
