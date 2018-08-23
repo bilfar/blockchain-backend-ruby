@@ -75,8 +75,8 @@ end
 task :insert_genesis_block do
   @con = PG.connect dbname: 'blockchain_test'
 
-  @con.exec('INSERT INTO blocks(sender, receiver, value, hash, previous_tx) ' \
-            "VALUES ('#{@hash}', '#{@hash}', 0, 'I am a genesis block :):)', '#{@hash}');")
+  @con.exec('INSERT INTO blocks(sender, receiver, value, hash, previous_tx)'\
+            "VALUES ('#{@hash}', '#{@hash}', 0, '#{@hash}', '#{@hash}');")
 
   print "🎟️ Genesis Block inserted into test database.\n"
 end
