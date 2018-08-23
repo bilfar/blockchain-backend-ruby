@@ -10,6 +10,8 @@ end
 
 require 'pg'
 
+@hash = '0' * 64
+
 task :setup do
   print "🎟 Setting up databases. Please standby...\n"
 
@@ -21,9 +23,10 @@ task :setup do
     con = PG.connect(dbname: "#{database}")
 
     con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
-             'receiver CHAR(64), value INT, previous_tx CHAR(64));')
-    con.exec('INSERT INTO blocks(sender, receiver, value, previous_tx) VALUES' \
-              "('#{'0' * 64}', '#{'0' * 64}', 0, '#{'0' * 64}');")
+             'receiver CHAR(64), value INT, hash CHAR(64), ' \
+             'previous_tx CHAR(64));')
+    con.exec('INSERT INTO blocks(sender, receiver, value, hash, previous_tx) ' \
+             "VALUES ('#{@hash}', '#{@hash}', 0, '#{@hash}', '#{@hash}');")
 
     print "🎟️Database '#{database}' and Genesis Block have been set up.\n"
   end
@@ -50,7 +53,8 @@ task :setup_travis_database do
   con = PG.connect dbname: 'blockchain_test'
 
   con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
-           'receiver CHAR(64), value INT, previous_tx CHAR(64));')
+           'receiver CHAR(64), value INT, hash CHAR(64), ' \
+           'previous_tx CHAR(64));')
 end
 
 task :clean_test_database do
@@ -65,8 +69,8 @@ end
 task :insert_genesis_block do
   @con = PG.connect dbname: 'blockchain_test'
 
-  @con.exec('INSERT INTO blocks(sender, receiver, value, previous_tx) VALUES' \
-            "('#{'0' * 64}', '#{'0' * 64}', 0, '#{'0' * 64}');")
+  @con.exec('INSERT INTO blocks(sender, receiver, value, hash, previous_tx) ' \
+            "VALUES ('#{@hash}', '#{@hash}', 0, '#{@hash}', '#{@hash}');")
 
   print "🎟️ Genesis Block inserted into test database.\n"
 end
