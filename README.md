@@ -43,7 +43,6 @@ I want a confirmation with my ticket number
 | Stack    | Technologies Used | Test Suites |
 | -------- | ----------------- | ----------- |
 | BackEnd - Dummy blockchain   | Ruby, Sinatra     | Rspec       |
-| BackEnd - Blockchain         | Ethereum, Solidity     | Truffle       |
 
 ## Learning Outcomes
 To be completed at end of project

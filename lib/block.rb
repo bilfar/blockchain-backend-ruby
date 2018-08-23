@@ -6,14 +6,14 @@ require 'pg'
 
 # Understands creating and retrieving new blocks
 class Block
-  attr_reader :id
+  attr_reader :id, :receiver
 
-  def initialize(id, sender, receiver, value, previous_tx, hash)
+  def initialize(id, data, hash)
     @id = id
-    @sender = sender
-    @receiver = receiver
-    @value = value
-    @previous_tx = previous_tx
+    @sender = data[:sender]
+    @receiver = data[:receiver]
+    @value = data[:value]
+    @previous_tx = data[:previous_tx]
     @hash = hash
   end
 
@@ -21,11 +21,10 @@ class Block
     switch_db_if_test_env
     blocks = @con.exec 'SELECT * FROM blocks;'
     blocks.map do |block|
-      Block.new(block['id'],
-                block['sender'],
-                block['receiver'],
-                block['value'],
-                block['previous_tx'],
+      Block.new(block['id'], { sender: block['sender'],
+                               receiver: block['receiver'],
+                               value: block['value'],
+                               previous_tx: block['previous_tx'] },
                 block['hash'])
     end
   end
@@ -36,9 +35,7 @@ class Block
             "previous_tx) VALUES ('#{sender}', '#{receiver}', '#{value}', " \
             "'#{Block.get_hash(sender, receiver, Block.prev_tx_hash)}', " \
             " '#{Block.prev_tx_hash}') RETURNING *;"
-    Block.new(result.first['id'], result.first['sender'],
-              result.first['receiver'], result.first['value'],
-              result.first['previous_tx'], result.first['hash'])
+    create_new_block(result)
   end
 
   def self.prev_tx_hash
@@ -51,6 +48,14 @@ class Block
     sha = Digest::SHA256.new
     sha.update(sender.to_s + receiver.to_s + previous_tx.to_s)
     sha.hexdigest
+  end
+
+  def self.create_new_block(result)
+    Block.new(result.first['id'], { sender: result.first['sender'],
+                                    receiver: result.first['receiver'],
+                                    value: result.first['value'],
+                                    previous_tx: result.first['previous_tx'] },
+              result.first['hash'])
   end
 
   private

@@ -8,6 +8,7 @@ GEM
     hirb (0.7.3)
     json (2.1.0)
     mustermann (1.0.3)
+    openssl (2.1.1)
     parallel (1.12.1)
     parser (2.5.1.2)
       ast (~> 2.4.0)
@@ -62,6 +63,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  openssl
   pg
   rake
   rspec

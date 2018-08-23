@@ -15,12 +15,12 @@ require 'pg'
 task :setup do
   print "🎟 Setting up databases. Please standby...\n"
 
-  ['blockchain', 'blockchain_test'].each do |database|
+  %w[blockchain blockchain_test].each do |database|
     con = PG.connect
 
     con.exec("CREATE DATABASE #{database};")
 
-    con = PG.connect(dbname: "#{database}")
+    con = PG.connect(dbname: database.to_s)
 
     con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
              'receiver CHAR(64), value INT, hash CHAR(64), ' \
@@ -39,7 +39,7 @@ task :nuke do
   confirm = STDIN.gets.chomp
   return unless confirm == 'y'
 
-  ['blockchain', 'blockchain_test'].each do |database|
+  %w[blockchain blockchain_test].each do |database|
     con = PG.connect
     con.exec("DROP DATABASE #{database}")
     print "💀 Database '#{database}' has been nuked.\n"

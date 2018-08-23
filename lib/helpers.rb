@@ -3,10 +3,12 @@
 require 'pg'
 
 def switch_db_if_test_env
-  if ENV['ENVIRONMENT'] == 'test'
-    dbname = 'blockchain_test'
-  else
-    dbname = 'blockchain'
-  end
-  @con = PG.connect dbname: "#{dbname}"
+  dbname = test_environment? ? 'blockchain_test' : 'blockchain'
+  @con = PG.connect dbname: dbname.to_s
+end
+
+private
+
+def test_environment?
+  ENV['ENVIRONMENT'] == 'test'
 end
