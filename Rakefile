@@ -22,15 +22,14 @@ task :setup do
 
     con = PG.connect(dbname: database.to_s)
 
-    con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
-             'receiver CHAR(64), value INT, hash CHAR(64), ' \
-             'previous_tx CHAR(64));')
-    con.exec('INSERT INTO blocks(sender, receiver, value, hash, previous_tx) ' \
-             "VALUES ('#{@hash}', '#{@hash}', 0, '#{@hash}', '#{@hash}');")
-    con.exec('CREATE TABLE transactions(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
-             'receiver CHAR(64), value INT, hash CHAR(64), description VARCHAR(64), ' \
-             'timestamp TIMESTAMP);')
-
+    con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64),
+              receiver CHAR(64), value INT, hash CHAR(64),
+              previous_tx CHAR(64));')
+    con.exec("INSERT INTO blocks(sender, receiver, value, hash, previous_tx)
+              VALUES ('#{@hash}', '#{@hash}', 0, '#{@hash}', '#{@hash}');")
+    con.exec('CREATE TABLE transactions(id SERIAL PRIMARY KEY, sender CHAR(64),
+              receiver CHAR(64), value INT, hash CHAR(64),
+              description VARCHAR(64), timestamp TIMESTAMP);')
 
     print "🎟️Database '#{database}' and Genesis Block have been set up.\n"
   end
@@ -56,12 +55,12 @@ task :setup_travis_database do
 
   con = PG.connect dbname: 'blockchain_test'
 
-  con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
-           'receiver CHAR(64), value INT, hash CHAR(64), ' \
-           'previous_tx CHAR(64));')
-  con.exec('CREATE TABLE transactions(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
-             'receiver CHAR(64), value INT, hash CHAR(64), description VARCHAR(64,) ' \
-             'timestamp TIMESTAMP);')
+  con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64),
+            receiver CHAR(64), value INT, hash CHAR(64),
+            previous_tx CHAR(64));')
+  con.exec('CREATE TABLE transactions(id SERIAL PRIMARY KEY, sender CHAR(64),
+            receiver CHAR(64), value INT, hash CHAR(64),
+            description VARCHAR(64), timestamp TIMESTAMP);')
 end
 
 task :clean_test_database do
@@ -77,7 +76,7 @@ task :insert_genesis_block do
   @con = PG.connect dbname: 'blockchain_test'
 
   @con.exec('INSERT INTO blocks(sender, receiver, value, hash, previous_tx) ' \
-            "VALUES ('#{@hash}', '#{@hash}', 0, '#{@hash}', '#{@hash}');")
+            "VALUES ('#{@hash}', '#{@hash}', 0, 'I am a genesis block :):)', '#{@hash}');")
 
   print "🎟️ Genesis Block inserted into test database.\n"
 end
