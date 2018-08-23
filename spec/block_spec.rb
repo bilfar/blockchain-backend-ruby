@@ -17,4 +17,11 @@ describe Block do
     end
   end
 
+  describe '.previous_transaction' do
+    it 'returns the previous transaction hash' do
+      block = Block.create('0', '0', 5, '0' * 64)
+      expect(Block.prev_transaction_hash).to eq ('0' * 64)
+    end
+  end
+
 end
