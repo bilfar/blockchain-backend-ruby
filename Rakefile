@@ -10,22 +10,23 @@ end
 
 require 'pg'
 
+@hash = '0' * 64
+
 task :setup do
   print "🎟 Setting up databases. Please standby...\n"
 
-  ['blockchain', 'blockchain_test'].each do |database|
+  %w[blockchain blockchain_test].each do |database|
     con = PG.connect
 
     con.exec("CREATE DATABASE #{database};")
 
-    con = PG.connect(dbname: "#{database}")
+    con = PG.connect(dbname: database.to_s)
 
     con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
-             'receiver CHAR(64), value INT, previous_tx CHAR(64));')
-    con.exec('INSERT INTO blocks(sender, receiver, value, previous_tx) VALUES' \
-     "('0000000000000000000000000000000000000000000000000000000000000000'," \
-     "'0000000000000000000000000000000000000000000000000000000000000000'," \
-     "0, '0000000000000000000000000000000000000000000000000000000000000000');")
+             'receiver CHAR(64), value INT, hash CHAR(64), ' \
+             'previous_tx CHAR(64));')
+    con.exec('INSERT INTO blocks(sender, receiver, value, hash, previous_tx) ' \
+             "VALUES ('#{@hash}', '#{@hash}', 0, '#{@hash}', '#{@hash}');")
 
     print "🎟️Database '#{database}' and Genesis Block have been set up.\n"
   end
@@ -38,7 +39,7 @@ task :nuke do
   confirm = STDIN.gets.chomp
   return unless confirm == 'y'
 
-  ['blockchain', 'blockchain_test'].each do |database|
+  %w[blockchain blockchain_test].each do |database|
     con = PG.connect
     con.exec("DROP DATABASE #{database}")
     print "💀 Database '#{database}' has been nuked.\n"
@@ -52,11 +53,8 @@ task :setup_travis_database do
   con = PG.connect dbname: 'blockchain_test'
 
   con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64), ' \
-           'receiver CHAR(64), value INT, previous_tx CHAR(64));')
-  con.exec('INSERT INTO blocks(sender, receiver, value, previous_tx) VALUES' \
-     "('0000000000000000000000000000000000000000000000000000000000000000'," \
-     "'0000000000000000000000000000000000000000000000000000000000000000'," \
-     "0, '0000000000000000000000000000000000000000000000000000000000000000');")
+           'receiver CHAR(64), value INT, hash CHAR(64), ' \
+           'previous_tx CHAR(64));')
 end
 
 task :clean_test_database do
@@ -65,5 +63,14 @@ task :clean_test_database do
   con = PG.connect dbname: 'blockchain_test'
 
   con.exec 'TRUNCATE blocks'
-  print "🎟️ Your database tables are ready for action. Have a nice day.\n"
+  print "🎟️ Your database tables are ready for action.\n"
+end
+
+task :insert_genesis_block do
+  @con = PG.connect dbname: 'blockchain_test'
+
+  @con.exec('INSERT INTO blocks(sender, receiver, value, hash, previous_tx) ' \
+            "VALUES ('#{@hash}', '#{@hash}', 0, '#{@hash}', '#{@hash}');")
+
+  print "🎟️ Genesis Block inserted into test database.\n"
 end
