@@ -8,9 +8,9 @@ class Blockchain
     @unverified_transactions = []
   end
 
-  def create_transaction(sender, receiver, name, value)
-    transaction = { sender: sender, receiver: receiver,
-                    name: name, value: value, time: Time.new }
+  def create_transaction(data)
+    p transaction = { sender: data['sender'], receiver: data['receiver'],
+                    name: data['name'], value: data['value'], time: Time.new }
     @unverified_transactions.push(transaction)
   end
 end
