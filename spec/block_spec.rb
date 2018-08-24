@@ -18,8 +18,8 @@ describe Block do
   end
 
   describe '.previous_transaction' do
-    it 'returns the previous transaction hash' do
-      expect(Block.prev_tx_hash).to eq('0' * 64)
+    it 'returns the previous block hash' do
+      expect(Block.prev_block_hash).to eq('0' * 64)
     end
   end
 
