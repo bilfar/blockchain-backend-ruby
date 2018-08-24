@@ -5,10 +5,11 @@ require 'openssl'
 
 
 class Block
-  attr_reader :transactions
+  attr_reader :transactions, :previous_hash
 
-  def initialize
+  def initialize(previous_hash: previous_hash)
     @transactions= []
+    @previous_hash = previous_hash
   end
 
 end
