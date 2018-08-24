@@ -7,8 +7,8 @@ require 'openssl'
 class Block
   attr_reader :transactions, :previous_hash, :timestamp
 
-  def initialize(previous_hash: previous_hash, timestamp: Time.now)
-    @transactions= []
+  def initialize(transactions: transactions, previous_hash: previous_hash, timestamp: Time.now)
+    @transactions= transactions
     @previous_hash = previous_hash
     @timestamp = timestamp
   end
