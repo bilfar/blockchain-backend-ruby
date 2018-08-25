@@ -12,7 +12,6 @@ class BlockchainApp < Sinatra::Base
   post '/blocks/create' do
     data = JSON.parse(request.body.read)['params']
     settings.blockchain.create_transaction(data)
-    p settings.blockchain
     halt 200
   end
 
