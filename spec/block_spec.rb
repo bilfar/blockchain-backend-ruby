@@ -29,4 +29,8 @@ describe Block do
   it 'provides a timestamp' do
     expect(block.timestamp).to eq(time)
   end
+
+  it 'return a calculate_hash' do
+    expect(block.hash.length).to eq 64
+  end
 end
