@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'block'
-require_relative '../lib/helpers'
 
 describe Block do
   let(:mock_previous_hash) { 'previous_hash' }
@@ -12,6 +11,7 @@ describe Block do
       { sender: '9999', receiver: '1234', name: 'Spice Girls', value: 1 }
     ]
   end
+
   subject(:block) do
     described_class.new(mock_transactions, mock_previous_hash, time)
   end

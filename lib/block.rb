@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative './helpers.rb'
 require 'openssl'
 
 # Understands creating and retrieving new blocks
