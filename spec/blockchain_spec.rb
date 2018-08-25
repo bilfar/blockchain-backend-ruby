@@ -6,7 +6,7 @@ describe Blockchain do
   before(:each) do
     @blockchain = Blockchain.new
     @data = { 'sender' => 'Fred', 'receiver' => 'Nabil',
-              'name' => 'Bieber', 'value' => 20 }
+              'name' => 'Justin Bieber', 'value' => 20 }
   end
 
   describe '.create_transaction' do

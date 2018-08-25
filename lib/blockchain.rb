@@ -11,17 +11,18 @@ class Blockchain
   end
 
   def create_transaction(data)
+    time = Time.new
     transaction = { sender: data['sender'], receiver: data['receiver'],
                     name: data['name'], value: data['value'],
-                    hash: hash_transaction(data), time: Time.new }
+                    hash: hash_transaction(data, time), time: time }
     @unverified_transactions.push(transaction)
   end
 
   private
 
-  def hash_transaction(data)
+  def hash_transaction(data, time)
     sha = Digest::SHA256.new
-    sha.update(data['sender'].to_s + data['receiver'].to_s + data['time'].to_s)
+    sha.update(data['sender'] + data['receiver'] + time.to_s)
     sha.hexdigest
   end
 end
