@@ -27,11 +27,9 @@ describe Blockchain do
     end
   end
 
-  describe './create_block' do
-    before(:each) do
-      @blockchain.create_block
-    end
+  describe '.create_block' do
     it "should add a new block to 'blocks' array" do
+      @blockchain.create_block
       expect(@blockchain.blocks.length).to eq 2
     end
   end

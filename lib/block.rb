@@ -14,7 +14,7 @@ class Block
   end
 
   def self.genesis
-    Block.new('GENESIS', '0')
+    Block.new('0000', '0000')
   end
 
   private

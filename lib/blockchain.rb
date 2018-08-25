@@ -16,11 +16,12 @@ class Blockchain
     transaction = { sender: data['sender'], receiver: data['receiver'],
                     name: data['name'], value: data['value'],
                     hash: hash_transaction(data, time), time: time }
-    @unverified_transactions.push(transaction)
+    unverified_transactions.push(transaction)
   end
 
   def create_block
-    blocks.push(Block.new(unverified_transactions, prev_block_hash))
+    block = Block.new(unverified_transactions, blocks.last.hash)
+    blocks.push(block)
   end
 
   private
@@ -29,9 +30,5 @@ class Blockchain
     sha = Digest::SHA256.new
     sha.update(data['sender'] + data['receiver'] + time.to_s)
     sha.hexdigest
-  end
-
-  def prev_block_hash
-    blocks.last.hash
   end
 end
