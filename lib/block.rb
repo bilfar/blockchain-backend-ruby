@@ -3,11 +3,11 @@
 require_relative './helpers.rb'
 require 'openssl'
 
-# block class
+# Understands creating and retrieving new blocks
 class Block
   attr_reader :transactions, :previous_hash, :timestamp, :hash
 
-  def initialize(transactions:, previous_hash:, timestamp: Time.now)
+  def initialize(transactions, previous_hash, timestamp = Time.now)
     @transactions = transactions
     @previous_hash = previous_hash
     @timestamp = timestamp
@@ -18,7 +18,7 @@ class Block
 
   def calculate_hash
     sha = Digest::SHA256.new
-    sha.update(transactions.to_s + timestamp.to_s + previous_hash.to_s)
+    sha.update(transactions.to_s + timestamp.to_s + previous_hash)
     sha.hexdigest
   end
 end

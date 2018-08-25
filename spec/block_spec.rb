@@ -13,9 +13,7 @@ describe Block do
     ]
   end
   subject(:block) do
-    described_class.new(transactions: mock_transactions,
-                        previous_hash: mock_previous_hash,
-                        timestamp: time)
+    described_class.new(mock_transactions, mock_previous_hash, time)
   end
 
   it 'has a transaction array' do
