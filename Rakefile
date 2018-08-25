@@ -25,8 +25,10 @@ task :setup do
     con.exec('CREATE TABLE blocks(id SERIAL PRIMARY KEY, sender CHAR(64),
               receiver CHAR(64), value INT, hash CHAR(64),
               previous_tx CHAR(64));')
+
     con.exec("INSERT INTO blocks(sender, receiver, value, hash, previous_tx)
               VALUES ('#{@hash}', '#{@hash}', 0, '#{@hash}', '#{@hash}');")
+
     con.exec('CREATE TABLE transactions(id SERIAL PRIMARY KEY, sender CHAR(64),
               receiver CHAR(64), value INT, hash CHAR(64),
               description VARCHAR(64), timestamp TIMESTAMP);')
