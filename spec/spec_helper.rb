@@ -14,16 +14,9 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [SimpleCov::Formatter::Console]
 )
 
-SimpleCov.start do
-  add_filter 'helpers.rb'
-end
+SimpleCov.start
 
 RSpec.configure do |config|
-  config.before(:each) do
-    Rake::Task['clean_test_database'].execute
-    Rake::Task['insert_genesis_block'].execute
-  end
-
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
