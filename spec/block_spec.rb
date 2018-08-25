@@ -3,29 +3,32 @@
 require 'block'
 
 describe Block do
-#   describe '.all' do
-#     it 'returns an array of blocks in database' do
-#       expect(Block.all.length).to eq 1
-#     end
-#   end
+  let(:mock_previous_hash) { 'previous_hash' }
+  let(:time) { '2018-08-24 15:07:53 +0100' }
+  let(:mock_transactions) do
+    [
+      { sender: '9876', receiver: '1234', name: 'Spice Girls', value: 1 },
+      { sender: '9999', receiver: '1234', name: 'Spice Girls', value: 1 }
+    ]
+  end
 
-  # describe '.create' do
-  #   it 'adds a new block instance to the database' do
-  #     block = Block.create('0', '0', 5)
-  #     expect(Block.all).to include(block)
-  #   end
-  # end
+  subject(:block) do
+    described_class.new(mock_transactions, mock_previous_hash, time)
+  end
 
-  # describe '.previous_transaction' do
-  #   it 'returns the previous block hash' do
-  #     expect(Block.prev_block_hash).to eq('0' * 64)
-  #   end
-  # end
+  it 'has a transaction array' do
+    expect(block.transactions).to eq(mock_transactions)
+  end
 
-  # describe '.hash_block' do
-  #   it 'initializes block with a hash value' do
-  #     block = Block.create('0', '0', 5)
-  #     expect(block.instance_variable_get('@hash').length).to eq 64
-  #   end
-  # end
+  it 'takes a previous hash as an argument' do
+    expect(block.previous_hash).to eq('previous_hash')
+  end
+
+  it 'provides a timestamp' do
+    expect(block.timestamp).to eq(time)
+  end
+
+  it 'return a calculate_hash' do
+    expect(block.hash.length).to eq 64
+  end
 end
