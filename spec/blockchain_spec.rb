@@ -3,6 +3,10 @@
 require 'blockchain'
 
 describe Blockchain do
+  let(:new_block) { double(:block_instance, previous_hash: '234567890') }
+  let(:block_class) { double(:block_class, new: new_block) }
+  let(:current_block) { double(:block_instance, hash: '123456789') }
+
   before(:each) do
     @blockchain = Blockchain.new
     @data = { 'sender' => 'Fred', 'receiver' => 'Nabil',
@@ -31,6 +35,15 @@ describe Blockchain do
     it "should add a new block to 'blocks' array" do
       @blockchain.create_block
       expect(@blockchain.blocks.length).to eq 2
+    end
+
+    context 'previous hash of new block does not match current block hash' do
+      it 'raises an error' do
+        blocks = [current_block]
+        invalid_blockchain = Blockchain.new(blocks)
+        expect { invalid_blockchain.create_block(block_class) }
+          .to raise_error('Block is invalid')
+      end
     end
   end
 end

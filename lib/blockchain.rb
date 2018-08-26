@@ -7,8 +7,8 @@ require 'openssl'
 class Blockchain
   attr_reader :blocks, :unverified_transactions
 
-  def initialize(genesis = Block.genesis)
-    @blocks = [genesis]
+  def initialize(blocks = [Block.genesis])
+    @blocks = blocks
     @unverified_transactions = []
   end
 
@@ -19,8 +19,9 @@ class Blockchain
     unverified_transactions.push(transaction)
   end
 
-  def create_block
-    block = Block.new(unverified_transactions, blocks.last.hash)
+  def create_block(block_class = Block)
+    block = block_class.new(unverified_transactions, blocks.last.hash)
+    raise 'Block is invalid' if invalid?(block)
     blocks.push(block)
   end
 
@@ -30,5 +31,10 @@ class Blockchain
     sha = Digest::SHA256.new
     sha.update(data['sender'] + data['receiver'] + time.to_s)
     sha.hexdigest
+  end
+
+  def invalid?(new_block)
+    current_block = @blocks[@blocks.length - 1]
+    new_block.previous_hash != current_block.hash
   end
 end
