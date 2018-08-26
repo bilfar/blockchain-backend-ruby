@@ -9,6 +9,7 @@ class BlockchainApp < Sinatra::Base
   set :blockchain, Blockchain.new
 
   get '/' do
+    @blocks = settings.blockchain.blocks
     erb(:index)
   end
 

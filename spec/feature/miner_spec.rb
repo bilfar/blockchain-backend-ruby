@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-feature 'miner page' do
-  scenario 'see a basic miner page' do
+feature 'viewing blocks' do
+  scenario 'see all the blocks stored on the blockchain' do
     visit('/')
-    expect(page).to have_content('Hello world!')
+    expect(page).to have_content('Latest Blocks')
+    expect(page).to have_content('0000')
   end
 end

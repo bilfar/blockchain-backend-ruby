@@ -1,1 +1,11 @@
-Hello world!
+<div class="header">
+  <div class="title">
+    <h1>Block Miner</h1>
+  </div>
+</div>
+<div class="container">
+  <h2>Latest Blocks</h2>
+  <% @blocks.each { |block| %>
+  <%= block.transactions %>
+  <% } %>
+</div>
