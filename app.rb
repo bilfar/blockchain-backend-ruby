@@ -8,6 +8,10 @@ require './lib/blockchain'
 class BlockchainApp < Sinatra::Base
   set :blockchain, Blockchain.new
 
+  get '/' do
+    erb(:index)
+  end
+
   post '/blocks/create' do
     data = JSON.parse(request.body.read)['params']
     settings.blockchain.create_transaction(data)
