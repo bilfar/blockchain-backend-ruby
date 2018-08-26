@@ -3,11 +3,16 @@
 require 'json'
 require 'sinatra/base'
 require './lib/blockchain'
-require './lib/block'
 
 # Understands sending and receiving transaction hashes
 class BlockchainApp < Sinatra::Base
   set :blockchain, Blockchain.new
+
+  get '/' do
+    @blocks = settings.blockchain.blocks
+    @transactions = settings.blockchain.unverified_transactions
+    erb(:index)
+  end
 
   post '/blocks/create' do
     data = JSON.parse(request.body.read)['params']

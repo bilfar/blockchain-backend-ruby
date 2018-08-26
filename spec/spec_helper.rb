@@ -3,6 +3,10 @@
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 
+require_relative '../app.rb'
+
+require 'capybara'
+require 'capybara/rspec'
 require 'rake'
 require 'rspec'
 require 'simplecov'
@@ -27,3 +31,5 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
+
+Capybara.app = BlockchainApp

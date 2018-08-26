@@ -12,7 +12,7 @@ class Blockchain
     @unverified_transactions = []
   end
 
-  def create_transaction(data, time = Time.new)
+  def create_transaction(data, time = Time.now)
     transaction = { sender: data['sender'], receiver: data['receiver'],
                     name: data['name'], value: data['value'],
                     hash: hash_transaction(data, time), time: time }
