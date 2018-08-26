@@ -6,6 +6,12 @@
 <div class="container">
   <h2>Latest Blocks</h2>
   <% @blocks.each { |block| %>
-  <%= block.transactions %>
+    <%= block.transactions %>
   <% } %>
+  <h2>Unverified Transactions</h2>
+  <% unless @transactions.empty? %>
+    <% @transactions.each { |transaction| %>
+      <%= transaction.hash %>
+    <% } %>
+  <% end %>
 </div>
