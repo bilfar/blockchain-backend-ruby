@@ -34,7 +34,7 @@ class Blockchain
   end
 
   def invalid?(new_block)
-    current_block = blocks[blocks.length - 1]
+    current_block = blocks.last
     new_block.previous_hash != current_block.hash
   end
 end
