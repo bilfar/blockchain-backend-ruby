@@ -19,12 +19,18 @@ class Blockchain
     unverified_transactions.push(transaction)
   end
 
+  def mine
+    raise 'It is empty' if @unverified_transactions.empty?
+    create_block
+    @unverified_transactions.clear
+  end
+
+  private
+
   def create_block
     block = Block.new(unverified_transactions, blocks.last.hash)
     blocks.push(block)
   end
-
-  private
 
   def hash_transaction(data, time)
     sha = Digest::SHA256.new
