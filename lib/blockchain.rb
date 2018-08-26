@@ -18,9 +18,9 @@ class Blockchain
                     hash: hash_transaction(data, time), time: time }
     unverified_transactions.push(transaction)
   end
-  
+
   def mine
-    raise 'Transactions are empty' if @unverified_transactions.empty?
+    raise 'It is empty' if @unverified_transactions.empty?
     create_block
     @unverified_transactions.clear
   end
@@ -30,7 +30,7 @@ class Blockchain
     raise 'Block is invalid' if invalid?(block)
     blocks.push(block)
   end
-  
+
   private
 
   def hash_transaction(data, time)
