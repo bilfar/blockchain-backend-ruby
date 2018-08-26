@@ -13,6 +13,10 @@ class Block
     @hash = calculate_hash
   end
 
+  def self.genesis
+    Block.new('0000', '0000')
+  end
+
   private
 
   def calculate_hash
