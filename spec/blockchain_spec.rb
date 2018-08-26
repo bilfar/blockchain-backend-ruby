@@ -27,10 +27,29 @@ describe Blockchain do
     end
   end
 
-  describe '.create_block' do
-    it "should add a new block to 'blocks' array" do
-      @blockchain.create_block
-      expect(@blockchain.blocks.length).to eq 2
+  describe '.mine' do
+    context 'unverified transaction is empty' do
+      it 'raise an error' do
+        expect { @blockchain.mine }.to raise_error 'It is empty'
+      end
+    end
+
+    context 'unverified transaction is not empty' do
+      before(:each) do
+        @blockchain.create_transaction(@data)
+        @blockchain.mine
+      end
+      it 'raise an error' do
+        expect { @blockchain.mine }.to raise_error 'It is empty'
+      end
+
+      it 'clear the unverified_transactions array' do
+        expect(@blockchain.unverified_transactions.length).to eq 0
+      end
+
+      it "should add a new block to 'blocks' array" do
+        expect(@blockchain.blocks.length).to eq 2
+      end
     end
   end
 end
