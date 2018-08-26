@@ -3,7 +3,6 @@
 require 'json'
 require 'sinatra/base'
 require './lib/blockchain'
-require './lib/block'
 
 # Understands sending and receiving transaction hashes
 class BlockchainApp < Sinatra::Base
