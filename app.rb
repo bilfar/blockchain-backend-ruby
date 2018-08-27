@@ -18,16 +18,19 @@ class BlockchainApp < Sinatra::Base
     erb(:index)
   end
 
-  post '/mine' do
-    settings.blockchain.mine_block
-    flash[:notice] = 'Blocks mined successfully'
+  post '/block/create' do
+    flash[:notice] = if settings.blockchain.mine_block.nil?
+                       'No transactions to verify!'
+                     else
+                       'Blocks mined successfully'
+                     end
     redirect '/'
   end
 
-  post '/blocks/create' do
+  post '/transaction/create' do
     data = JSON.parse(request.body.read)['params']
-    settings.blockchain.create_transaction(data)
-    halt 200
+    transaction = settings.blockchain.create_transaction(data)
+    transaction.last[:hash]
   end
 
   run! if app_file == $PROGRAM_NAME

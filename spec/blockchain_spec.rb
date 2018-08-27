@@ -32,21 +32,10 @@ describe Blockchain do
   end
 
   describe '.mine_block' do
-    context 'unverified transaction is empty' do
-      it 'raise an error' do
-        expect { @blockchain.mine_block }
-          .to raise_error 'Nothing to verify'
-      end
-    end
-
     context 'unverified transaction is not empty' do
       before(:each) do
         @blockchain.create_transaction(@data)
         @blockchain.mine_block
-      end
-      it 'raise an error' do
-        expect { @blockchain.mine_block }
-          .to raise_error 'Nothing to verify'
       end
 
       it 'clear the unverified_transactions array' do
