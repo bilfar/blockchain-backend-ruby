@@ -33,8 +33,8 @@ class Blockchain
     sha.hexdigest
   end
 
-  def create_block(block_class)
-    block = block_class.new(unverified_transactions.dup, blocks.last.hash)
+  def create_block(block)
+    block = block.new(unverified_transactions.dup, blocks.last.hash)
     raise 'Block is invalid' if invalid?(block)
     blocks.push(block)
   end

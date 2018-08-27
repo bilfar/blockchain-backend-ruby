@@ -19,7 +19,7 @@ class Block
 
   private
 
-  def calculate_hash(prefix = '00')
+  def calculate_hash(prefix = '0')
     nonce = 0
     loop do
       hash = generate_hash(nonce)
