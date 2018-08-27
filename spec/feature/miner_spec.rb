@@ -16,3 +16,10 @@ feature 'viewing transactions' do
     expect(page).to have_content('Unverified Transactions')
   end
 end
+
+feature 'mining blocks' do
+  scenario 'has a mine button' do
+    visit('/')
+    expect(page).to have_button('Mine')
+  end
+end

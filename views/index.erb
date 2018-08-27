@@ -1,9 +1,16 @@
+<head>
+  <meta http-equiv="refresh" content="10">
+</head>
+
 <div class="header">
   <div class="title">
     <h1>Block Miner</h1>
   </div>
 </div>
 <div class="container">
+
+    <%= styled_flash %>
+
   <h2>Latest Blocks</h2>
   <table id="blocks">
     <tr>
@@ -54,5 +61,9 @@
       <% } %>
     <% end %>
   </table>
+
+  <form method="post" action="/mine">
+    <input class='btn btn-primary' type='submit' value='Mine'>
+  </form>
 
 </div>
