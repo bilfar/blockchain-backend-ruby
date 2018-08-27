@@ -34,7 +34,7 @@ class Blockchain
   end
 
   def create_block(block_class)
-    block = block_class.new(unverified_transactions, blocks.last.hash)
+    block = block_class.new(unverified_transactions.dup, blocks.last.hash)
     raise 'Block is invalid' if invalid?(block)
     blocks.push(block)
   end
