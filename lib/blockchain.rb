@@ -20,10 +20,9 @@ class Blockchain
   end
 
   def mine_block(block = Block)
-    unless unverified_transactions.empty?
-      create_block(block)
-      unverified_transactions.clear
-    end
+    return if unverified_transactions.empty?
+    create_block(block)
+    unverified_transactions.clear
   end
 
   private
