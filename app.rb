@@ -3,7 +3,6 @@
 require 'json'
 require 'sinatra/base'
 require './lib/blockchain'
-require 'sinatra'
 require 'sinatra/flash'
 
 # Understands sending and receiving transaction hashes
