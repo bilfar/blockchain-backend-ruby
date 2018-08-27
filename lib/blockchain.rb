@@ -19,10 +19,11 @@ class Blockchain
     unverified_transactions.push(transaction)
   end
 
-  def mine_block(block_class = Block)
-    raise 'Nothing to verify' if unverified_transactions.empty?
-    create_block(block_class)
-    unverified_transactions.clear
+  def mine_block(block = Block)
+    unless unverified_transactions.empty?
+      create_block(block)
+      unverified_transactions.clear
+    end
   end
 
   private

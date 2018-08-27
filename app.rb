@@ -19,8 +19,11 @@ class BlockchainApp < Sinatra::Base
   end
 
   post '/mine' do
-    settings.blockchain.mine_block
-    flash[:notice] = 'Blocks mined successfully'
+    if settings.blockchain.mine_block != nil
+      flash[:notice] = 'Blocks mined successfully'
+    else
+      flash[:notice] = 'No transactions to verify!'
+    end
     redirect '/'
   end
 

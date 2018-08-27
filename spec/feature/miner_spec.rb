@@ -22,4 +22,9 @@ feature 'mining blocks' do
     visit('/')
     expect(page).to have_button('Mine')
   end
+  scenario 'displays flash message if no transactions exist' do
+    visit('/')
+    click_button('Mine')
+    expect(page).to have_content('No transactions to verify!')
+  end
 end
