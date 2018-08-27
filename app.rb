@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
+require './lib/blockchain'
+
 require 'json'
 require 'sinatra/base'
-require './lib/blockchain'
 require 'sinatra/flash'
 
 # Understands sending and receiving transaction hashes
 class BlockchainApp < Sinatra::Base
-  enable :sessions
   register Sinatra::Flash
+  enable :sessions
   set :blockchain, Blockchain.new
 
   get '/' do
@@ -19,7 +20,7 @@ class BlockchainApp < Sinatra::Base
 
   post '/mine' do
     settings.blockchain.mine_block
-    flash[:notice] = 'Blocks mined sucessfully'
+    flash[:notice] = 'Blocks mined successfully'
     redirect '/'
   end
 
