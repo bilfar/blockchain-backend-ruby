@@ -20,9 +20,9 @@ class Blockchain
   end
 
   def mine_block(block_class = Block)
-    raise 'Nothing to verify' if @unverified_transactions.empty?
+    raise 'Nothing to verify' if unverified_transactions.empty?
     create_block(block_class)
-    @unverified_transactions.clear
+    unverified_transactions.clear
   end
 
   private
