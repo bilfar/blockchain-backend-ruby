@@ -3,6 +3,10 @@
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 
+require_relative '../app.rb'
+
+require 'capybara'
+require 'capybara/rspec'
 require 'rake'
 require 'rspec'
 require 'simplecov'
@@ -14,16 +18,9 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [SimpleCov::Formatter::Console]
 )
 
-SimpleCov.start do
-  add_filter 'helpers.rb'
-end
+SimpleCov.start
 
 RSpec.configure do |config|
-  config.before(:each) do
-    Rake::Task['clean_test_database'].execute
-    Rake::Task['insert_genesis_block'].execute
-  end
-
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
@@ -34,3 +31,5 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
+
+Capybara.app = BlockchainApp
