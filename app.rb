@@ -13,21 +13,24 @@ class BlockchainApp < Sinatra::Base
   set :blockchain, Blockchain.new
 
   get '/' do
-    @blocks = settings.blockchain.blocks
-    @transactions = settings.blockchain.unverified_transactions
+    @blockchain = settings.blockchain
     erb(:index)
   end
 
-  post '/mine' do
-    settings.blockchain.mine_block
-    flash[:notice] = 'Blocks mined successfully'
+  post '/block' do
+    flash[:notice] = if settings.blockchain.mine_block.nil?
+                       puts 'No transactions to verify!'
+                       'No transactions to verify!'
+                     else
+                       'Blocks mined successfully'
+                     end
     redirect '/'
   end
 
-  post '/blocks/create' do
+  post '/transaction' do
     data = JSON.parse(request.body.read)['params']
-    settings.blockchain.create_transaction(data)
-    halt 200
+    transaction = settings.blockchain.create_transaction(data)
+    transaction.last[:hash]
   end
 
   get '/transaction/:index' do

@@ -5,9 +5,10 @@ require 'openssl'
 
 # Understands creating transactions and blocks
 class Blockchain
-  attr_reader :blocks, :unverified_transactions
+  attr_reader :balance, :blocks, :unverified_transactions
 
   def initialize(blocks = [Block.genesis])
+    @balance = 0
     @blocks = blocks
     @unverified_transactions = []
   end
@@ -19,22 +20,24 @@ class Blockchain
     unverified_transactions.push(transaction)
   end
 
-  def mine_block(block_class = Block)
-    raise 'Nothing to verify' if @unverified_transactions.empty?
-    create_block(block_class)
-    @unverified_transactions.clear
+  def mine_block(block = Block)
+    return if unverified_transactions.empty?
+    create_block(block)
+    unverified_transactions.clear
+    @balance += 5
   end
 
   private
 
   def hash_transaction(data, time)
     sha = Digest::SHA256.new
-    sha.update(data['sender'] + data['receiver'] + time.to_s)
+    sha.update(unverified_transactions.length.to_s + data['sender']\
+                                  + data['receiver'] + time.to_s)
     sha.hexdigest
   end
 
-  def create_block(block_class)
-    block = block_class.new(unverified_transactions.dup, blocks.last.hash)
+  def create_block(block)
+    block = block.new(unverified_transactions.dup, blocks.last.hash)
     raise 'Block is invalid' if invalid?(block)
     blocks.push(block)
   end

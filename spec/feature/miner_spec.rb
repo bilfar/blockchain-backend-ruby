@@ -17,10 +17,22 @@ feature 'viewing transactions' do
   end
 end
 
+feature 'balance' do
+  scenario 'displays miner balance' do
+    visit('/')
+    expect(page).to have_content('Current balance:')
+  end
+end
+
 feature 'mining blocks' do
   scenario 'has a mine button' do
     visit('/')
     expect(page).to have_button('Mine')
+  end
+  scenario 'displays flash message if no transactions exist' do
+    visit('/')
+    click_button('Mine')
+    expect(page).to have_content('No transactions to verify!')
   end
 end
 
