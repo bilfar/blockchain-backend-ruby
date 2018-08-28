@@ -24,7 +24,12 @@
         <% unless @blockchain.blocks.empty? %>
           <% @blockchain.blocks.each_with_index { |block, index| %>
             <tr>
-              <td><%= block.hash %></td>
+              <td>
+                <form action='/transaction/<%= index %>' method ='GET'>
+                  <input type='hidden' name='index' value='<%= index %>'>
+                  <button id='hash_button' type='submit' value='transaction'><%= block.hash %></button>
+                </form>
+              </td>
               <% if index == 0 %>
                   <td><%= 0 %></td>
                 <% else %>
