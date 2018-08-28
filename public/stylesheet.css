@@ -1,13 +1,18 @@
 body {
     background-color: #F6F8FA;
-    color: #23292E;
+    color: #525962;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
     margin: 0;
 }
 
+a {
+    color: #EE6C4D;
+    text-decoration: none;
+}
+
 h2 {
-    color: #23292E;
+    color: #525962;
     font-size: 17px;
     padding: 0 15px;
 }
@@ -69,14 +74,17 @@ table {
 }
 
 td {
-    font-size: 12px;
-    padding: 5px;
+    font-size: 13px;
+    line-height: 1.4em;
+    padding: 15px;
     word-wrap:break-word;
 }
 
 th {
     align-content: left;
     font-size: 14px;
+    padding: 0 0 7px 14px;
+    text-align: left;
 }
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {background-color: #F6F8FA;}
