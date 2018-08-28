@@ -30,5 +30,10 @@ class BlockchainApp < Sinatra::Base
     halt 200
   end
 
+  get '/transaction/:index' do
+    index = params[:index].to_i
+    @block = settings.blockchain.blocks[index]
+    erb(:transaction)
+  end
   run! if app_file == $PROGRAM_NAME
 end

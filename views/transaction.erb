@@ -1,0 +1,35 @@
+<table id="blocks">
+  <tr>
+    <th>Block Hash</th>
+    <th>Previous Block Hash</th>
+    <th>Timestamp</th>
+  <tr>
+    <tr>
+      <td><%= @block.hash %></td>
+      <td><%= @block.previous_hash %></td>
+      <td><%= @block.timestamp %></td>
+    </tr>
+</table>
+
+<table id="transaction">
+  <tr>
+    <th>Transactions hash</th>
+    <th>Purchaser Address</th>
+    <th>Vendor Address</th>
+    <th>Ticket Information</th>
+    <th>Cost</th>
+    <th>Time of Transaction</th>
+  </tr>
+  <% @block.transactions.each do |transaction| %>
+  <tr>
+    <td><%= transaction[:hash] %></td>
+    <td><%= transaction[:sender] %></td>
+    <td><%= transaction[:receiver] %></td>
+    <td><%= transaction[:name] %></td>
+    <td><%= transaction[:value] %></td>
+    <td><%= transaction[:time] %></td>
+  </tr>
+  <% end %>
+</table>
+
+<a href='/'>Back Homepage!</a>

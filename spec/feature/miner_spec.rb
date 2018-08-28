@@ -23,3 +23,10 @@ feature 'mining blocks' do
     expect(page).to have_button('Mine')
   end
 end
+
+feature 'blocks hash' do
+  scenario 'has a block hash button' do
+    visit('/')
+    expect(page).to have_button('hash_button')
+  end
+end
