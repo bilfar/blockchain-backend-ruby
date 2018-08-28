@@ -32,21 +32,10 @@ describe Blockchain do
   end
 
   describe '.mine_block' do
-    context 'unverified transaction is empty' do
-      it 'raise an error' do
-        expect { @blockchain.mine_block }
-          .to raise_error 'Nothing to verify'
-      end
-    end
-
     context 'unverified transaction is not empty' do
       before(:each) do
         @blockchain.create_transaction(@data)
         @blockchain.mine_block
-      end
-      it 'raise an error' do
-        expect { @blockchain.mine_block }
-          .to raise_error 'Nothing to verify'
       end
 
       it 'clear the unverified_transactions array' do
@@ -66,6 +55,13 @@ describe Blockchain do
         expect { invalid_blockchain.mine_block(block_class) }
           .to raise_error('Block is invalid')
       end
+    end
+  end
+
+  describe 'miner reward' do
+    it 'should reward the miner with credits once a block is mined' do
+      @blockchain.create_transaction(@data)
+      expect { @blockchain.mine_block }.to change { @blockchain.balance }.by(+5)
     end
   end
 end

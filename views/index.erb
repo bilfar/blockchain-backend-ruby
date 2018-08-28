@@ -2,68 +2,83 @@
   <meta http-equiv="refresh" content="10">
 </head>
 
-<div class="header">
-  <div class="title">
-    <h1>Block Miner</h1>
-  </div>
-</div>
 <div class="container">
-
-  <%= styled_flash %>
-
-  <h2>Latest Blocks</h2>
-  <table id="blocks">
-    <tr>
-      <th>Block Hash</th>
-      <th>Number of Transactions</th>
-      <th>Previous Block Hash</th>
-      <th>Mined</th>
-    </tr>
-    <% unless @blocks.empty? %>
-      <% @blocks.each_with_index { |block, index| %>
+  <div class="header">
+    <div class="title">
+      <h1>Block Miner</h1>
+    </div>
+    <div class="balance">
+      Current balance: <%= @blockchain.balance %>
+    </div>
+  </div>
+  <div class="content">
+    <div class="list_blocks">
+      <h2>Latest Blocks</h2>
+      <table id="blocks">
         <tr>
-          <td><%= block.hash %></td>
-          <% if index == 0 %>
-              <td><%= 0 %></td>
-            <% else %>
-              <td><%= block.transactions.length %></td>
-          <% end %>
-          <% if index == 0 %>
-            <td>N/A</td>
-          <% else %>
-            <td><%= block.previous_hash %></td>
-          <% end %>
-          <td><%= block.timestamp %></td>
+          <th>Block Hash</th>
+          <th>Number of Transactions</th>
+          <th>Previous Block Hash</th>
+          <th>Mined</th>
         </tr>
-      <% } %>
-    <% end %>
-  </table>
-  <h2>Unverified Transactions</h2>
-  <table id="transactions">
-    <tr>
-      <th>Transaction Hash</th>
-      <th>Purchaser Address</th>
-      <th>Vendor Address</th>
-      <th>Ticket Information</th>
-      <th>Cost</th>
-      <th>Time of Transaction</th>
-    </tr>
-    <% unless @transactions.empty? %>
-      <% @transactions.each { |transaction| %>
+        <% unless @blockchain.blocks.empty? %>
+          <% @blockchain.blocks.each_with_index { |block, index| %>
+            <tr>
+              <td>
+                <form action='/transaction/<%= index %>' method ='GET'>
+                  <input type='hidden' name='index' value='<%= index %>'>
+                  <button id='hash_button' type='submit' value='transaction'><%= block.hash %></button>
+                </form>
+              </td>
+              <% if index == 0 %>
+                  <td><%= 0 %></td>
+                <% else %>
+                  <td><%= block.transactions.length %></td>
+              <% end %>
+              <% if index == 0 %>
+                <td>N/A</td>
+              <% else %>
+                <td><%= block.previous_hash %></td>
+              <% end %>
+              <td><%= block.timestamp %></td>
+            </tr>
+          <% } %>
+        <% end %>
+      </table>
+    </div>
+    <div class="list_transactions">
+      <h2>Unverified Transactions</h2>
+      <table id="transactions">
         <tr>
-          <td><%= transaction[:hash] %></td>
-          <td><%= transaction[:sender] %></td>
-          <td><%= transaction[:receiver] %></td>
-          <td><%= transaction[:name] %></td>
-          <td><%= transaction[:value] %></td>
-          <td><%= transaction[:time] %></td>
+          <th>Transaction Hash</th>
+          <th>Purchaser Address</th>
+          <th>Vendor Address</th>
+          <th>Ticket Information</th>
+          <th>Cost</th>
+          <th>Time of Transaction</th>
         </tr>
-      <% } %>
-    <% end %>
-  </table>
-
-  <form method="post" action="/mine">
-    <input class='btn btn-primary' type='submit' value='Mine'>
-  </form>
-
+        <% unless @blockchain.unverified_transactions.empty? %>
+          <% @blockchain.unverified_transactions.each { |transaction| %>
+            <tr>
+              <td><%= transaction[:hash] %></td>
+              <td><%= transaction[:sender] %></td>
+              <td><%= transaction[:receiver] %></td>
+              <td><%= transaction[:name] %></td>
+              <td><%= transaction[:value] %></td>
+              <td><%= transaction[:time] %></td>
+            </tr>
+          <% } %>
+        <% end %>
+      </table>
+    </div>
+    <div class="mine">
+      <div class="flash_message">
+        <%= styled_flash %>
+      </div>
+      <form method="post" action="/block" id="mine_button">
+        <input class='btn btn-primary' type='submit' value='Mine'>
+      </form>
+    </div>
+  </div>
+  <div class="footer"></div>
 </div>
