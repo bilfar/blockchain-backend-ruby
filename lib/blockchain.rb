@@ -5,9 +5,10 @@ require 'openssl'
 
 # Understands creating transactions and blocks
 class Blockchain
-  attr_reader :blocks, :unverified_transactions
+  attr_reader :balance, :blocks, :unverified_transactions
 
   def initialize(blocks = [Block.genesis])
+    @balance = 0
     @blocks = blocks
     @unverified_transactions = []
   end
@@ -23,6 +24,7 @@ class Blockchain
     return if unverified_transactions.empty?
     create_block(block)
     unverified_transactions.clear
+    @balance += 5
   end
 
   private

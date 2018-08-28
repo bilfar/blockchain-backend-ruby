@@ -17,6 +17,13 @@ feature 'viewing transactions' do
   end
 end
 
+feature 'balance' do
+  scenario 'displays miner balance' do
+    visit('/')
+    expect(page).to have_content('Current balance:')
+  end
+end
+
 feature 'mining blocks' do
   scenario 'has a mine button' do
     visit('/')
