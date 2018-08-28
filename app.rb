@@ -19,6 +19,7 @@ class BlockchainApp < Sinatra::Base
 
   post '/block' do
     flash[:notice] = if settings.blockchain.mine_block.nil?
+                       puts 'No transactions to verify!'
                        'No transactions to verify!'
                      else
                        'Blocks mined successfully'
