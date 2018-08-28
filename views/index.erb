@@ -29,10 +29,7 @@
           <% @blockchain.blocks.each_with_index { |block, index| %>
             <tr>
               <td>
-                <form action='/transaction/<%= index %>' method ='GET'>
-                  <input type='hidden' name='index' value='<%= index %>'>
-                  <button id='hash_button' type='submit' value='transaction'><%= block.hash %></button>
-                </form>
+                <a href="/transaction/<%= index %>" id="hash_link"><%= block.hash %></a>
               </td>
               <% if index == 0 %>
                   <td><%= 0 %></td>
