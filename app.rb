@@ -13,8 +13,7 @@ class BlockchainApp < Sinatra::Base
   set :blockchain, Blockchain.new
 
   get '/' do
-    @blocks = settings.blockchain.blocks
-    @transactions = settings.blockchain.unverified_transactions
+    @blockchain = settings.blockchain
     erb(:index)
   end
 
