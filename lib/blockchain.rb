@@ -24,7 +24,7 @@ class Blockchain
     return if unverified_transactions.empty?
     create_block(block)
     unverified_transactions.clear
-    @balance += 10
+    @balance += 5
   end
 
   private

@@ -17,7 +17,7 @@ class BlockchainApp < Sinatra::Base
     erb(:index)
   end
 
-  post '/block/create' do
+  post '/block' do
     flash[:notice] = if settings.blockchain.mine_block.nil?
                        'No transactions to verify!'
                      else
@@ -26,7 +26,7 @@ class BlockchainApp < Sinatra::Base
     redirect '/'
   end
 
-  post '/transaction/create' do
+  post '/transaction' do
     data = JSON.parse(request.body.read)['params']
     transaction = settings.blockchain.create_transaction(data)
     transaction.last[:hash]

@@ -61,7 +61,7 @@ describe Blockchain do
   describe 'miner reward' do
     it 'should reward the miner with credits once a block is mined' do
       @blockchain.create_transaction(@data)
-      expect { @blockchain.mine_block }.to change{ @blockchain.balance }.by(+10)
+      expect { @blockchain.mine_block }.to change { @blockchain.balance }.by(+5)
     end
   end
 end
