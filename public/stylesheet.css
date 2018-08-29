@@ -1,5 +1,5 @@
 body {
-    background-color: #F6F8FA;
+    background-color: #E3E7E9;
     color: #525962;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -132,4 +132,4 @@ th {
     padding: 0 0 7px 0;
 }
 
-tr:nth-child(even) {background-color: #F6F8FA;}
+tr:nth-child(even) {background-color: #F2F2F2;}

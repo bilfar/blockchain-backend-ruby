@@ -56,7 +56,7 @@
               <% else %>
                 <td id="td_center"><%= block.transactions.length %></td>
               <% end %>
-              <td id="td_center"><%= block.timestamp %></td>
+              <td id="td_center"><%= DateTime.parse(block.timestamp.to_s).strftime("%H:%I:%S") %></td>
             </tr>
           <% end %>
         <% end %>
