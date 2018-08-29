@@ -34,12 +34,12 @@
         <th id="solo_block_header">Block Hash</th>
         <th id="solo_block_header">Previous Block Hash</th>
         <th>Mined</th>
+      </tr>
       <tr>
-        <tr>
-          <td><%= @block.hash %></td>
-          <td><%= @block.previous_hash %></td>
-          <td id="td_center"><%= DateTime.parse(@block.timestamp.to_s).strftime("%H:%M:%S") %></td>
-        </tr>
+        <td><%= @block.hash %></td>
+        <td><%= @block.previous_hash %></td>
+        <td id="td_center"><%= DateTime.parse(@block.timestamp.to_s).strftime("%H:%M:%S") %></td>
+      </tr>
     </table>
   </div>
   <div class="list_transactions">

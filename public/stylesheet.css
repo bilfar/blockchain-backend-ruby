@@ -77,8 +77,8 @@ h2 {
 
 .flash_message {
     background-color: white;
+    border-bottom: 1.10px solid #D0D5DA;
     color: #EE6C4D;
-    display: inline-block;
     font-size: 15px;
     letter-spacing: 0.02em;
     text-align: center;
@@ -135,6 +135,7 @@ h2 {
     background-color: #EE6C4D;
     display: inline-block;
     cursor: pointer;
+    width: 160px;
 }
 
 .btn-secondary {
@@ -148,6 +149,7 @@ h2 {
     background-color: #151A23;
     display: inline-block;
     cursor: pointer;
+    width: 160px;
 }
 
 table {

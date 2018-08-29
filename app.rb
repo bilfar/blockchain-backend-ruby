@@ -22,7 +22,7 @@ class BlockchainApp < Sinatra::Base
                        puts 'No transactions to verify!'
                        'No transactions to verify!'
                      else
-                       'Blocks mined successfully'
+                       'Block mined successfully'
                      end
     redirect '/'
   end

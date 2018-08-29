@@ -14,7 +14,7 @@ class Block
   end
 
   def self.genesis
-    Block.new(Block.first_genesis_data, '0000')
+    Block.new(Block.first_genesis_data, 'N/A')
   end
 
   def self.first_genesis_data
@@ -30,7 +30,7 @@ class Block
 
   private
 
-  def calculate_hash(prefix = '0')
+  def calculate_hash(prefix = '00')
     nonce = 0
     loop do
       hash = generate_hash(nonce)
