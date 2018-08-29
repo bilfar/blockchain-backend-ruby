@@ -26,36 +26,44 @@
   </div>
 </div>
 
-<table id="blocks">
-  <tr>
-    <th>Block Hash</th>
-    <th>Previous Block Hash</th>
-    <th>Timestamp</th>
-  <tr>
-    <tr>
-      <td><%= @block.hash %></td>
-      <td><%= @block.previous_hash %></td>
-      <td><%= @block.timestamp %></td>
-    </tr>
-</table>
-
-<table id="transaction">
-  <tr>
-    <th>Transactions hash</th>
-    <th>Purchaser Address</th>
-    <th>Vendor Address</th>
-    <th>Ticket Information</th>
-    <th>Cost</th>
-    <th>Time of Transaction</th>
-  </tr>
-  <% @block.transactions.each do |transaction| %>
-  <tr>
-    <td><%= transaction[:hash] %></td>
-    <td><%= transaction[:sender] %></td>
-    <td><%= transaction[:receiver] %></td>
-    <td><%= transaction[:name] %></td>
-    <td><%= transaction[:value] %></td>
-    <td><%= transaction[:time] %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="content">
+  <div class="list_blocks">
+    <h2>Block Information</h2>
+    <table id="blocks">
+      <tr>
+        <th id="solo_block_header">Block Hash</th>
+        <th id="solo_block_header">Previous Block Hash</th>
+        <th>Mined</th>
+      <tr>
+        <tr>
+          <td><%= @block.hash %></td>
+          <td><%= @block.previous_hash %></td>
+          <td id="td_center"><%= DateTime.parse(@block.timestamp.to_s).strftime("%H:%M:%S") %></td>
+        </tr>
+    </table>
+  </div>
+  <div class="list_transactions">
+    <h2>Transactions Stored in Block</h2>
+      <table id="transactions">
+        <tr>
+          <th id="transaction_list_hash">Transaction Hash</th>
+          <th id="transaction_list_hash">Purchaser Address</th>
+          <th id="transaction_list_hash">Vendor Address</th>
+          <th id="transaction_list_hash">Ticket Information</th>
+          <th>Cost</th>
+          <th>Time</th>
+        </tr>
+        <% @block.transactions.reverse.each do |transaction| %>
+        <tr>
+          <td><%= transaction[:hash] %></td>
+          <td><%= transaction[:sender] %></td>
+          <td><%= transaction[:receiver] %></td>
+          <td><%= transaction[:name] %></td>
+          <td id="td_center"><%= transaction[:value] %></td>
+          <% p transaction[:time] %>
+          <td id="td_center"><%= DateTime.parse(transaction[:time].to_s).strftime("%H:%M:%S") %></td>
+        </tr>
+        <% end %>
+      </table>
+  </div>
+</div>

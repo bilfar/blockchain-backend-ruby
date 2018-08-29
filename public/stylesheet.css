@@ -40,6 +40,12 @@ h2 {
     width: 41%;
 }
 
+#solo_block_header {
+    align-content: left;
+    text-align: left;
+    width: 46%;
+}
+
 #td_center {
     align-content: center;
     text-align: center;

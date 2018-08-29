@@ -74,7 +74,7 @@
           <th>Time</th>
         </tr>
         <% unless @blockchain.unverified_transactions.empty? %>
-          <% @blockchain.unverified_transactions.reverse.each { |transaction| %>
+          <% @blockchain.unverified_transactions.reverse.each do |transaction| %>
             <tr>
               <td><%= transaction[:hash] %></td>
               <td><%= transaction[:sender] %></td>
@@ -83,7 +83,7 @@
               <td id="td_center"><%= transaction[:value] %></td>
               <td id="td_center"><%= DateTime.parse(transaction[:time].to_s).strftime("%H:%M:%S") %></td>
             </tr>
-          <% } %>
+          <% end %>
         <% end %>
       </table>
     </div>

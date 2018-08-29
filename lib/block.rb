@@ -19,12 +19,12 @@ class Block
 
   def self.first_genesis_data
     [
-      { sender: '0',
-        receiver: '0',
-        name: 'genesis block',
-        value: '0',
-        hash: '0',
-        time: '0' }
+      { sender: 'Genesis',
+        receiver: 'Genesis',
+        name: 'Genesis',
+        value: 'Genesis',
+        hash: 'Genesis',
+        time: Time.now }
     ]
   end
 
