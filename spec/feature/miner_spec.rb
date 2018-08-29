@@ -20,7 +20,7 @@ end
 feature 'balance' do
   scenario 'displays miner balance' do
     visit('/')
-    expect(page).to have_content('Current balance:')
+    expect(page).to have_content('Balance:')
   end
 end
 

@@ -72,7 +72,10 @@ h2 {
 .flash_message {
     background-color: white;
     color: #EE6C4D;
+    display: inline-block;
     font-size: 15px;
+    letter-spacing: 0.02em;
+    text-align: center;
     padding: 20px;
 }
 
@@ -102,6 +105,11 @@ h2 {
     padding: 15px 0 0 0;
 }
 
+#home_button {
+    margin: 0;
+    padding: 15px 0 0 0;
+}
+
 .list_blocks {
     margin: 0 0 30px 0;
 }
@@ -119,6 +127,19 @@ h2 {
     /*text-shadow: 1px 1px 1px #272828;*/
     font-size: 16px;
     background-color: #EE6C4D;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    /* border-radius: 8px; */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    /*text-shadow: 1px 1px 1px #272828;*/
+    font-size: 16px;
+    background-color: #151A23;
     display: inline-block;
     cursor: pointer;
 }

@@ -35,6 +35,7 @@ class BlockchainApp < Sinatra::Base
 
   get '/transaction/:index' do
     index = params[:index].to_i
+    @blockchain = settings.blockchain
     @block = settings.blockchain.blocks[index]
     erb(:transaction)
   end
