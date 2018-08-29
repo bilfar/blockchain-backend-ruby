@@ -18,6 +18,7 @@ h2 {
 }
 
 .content {
+    margin: 30px 0 0 0;
     padding: 0 2% 0 2%;
     width: 96%;
 }
@@ -28,9 +29,20 @@ h2 {
     display: inline-block;
     font-family: 'Roboto', sans-serif;
     height: 50px;
-    margin: 0 0 15px 0;
+    margin: 0 0 0 0;
     padding: 20px 2% 0 2%;
     width: 96%;
+}
+
+#block_header {
+    align-content: left;
+    text-align: left;
+    width: 40%;
+}
+
+#td_center {
+    align-content: center;
+    text-align: center;
 }
 
 .header h1 {
@@ -50,7 +62,29 @@ h2 {
     -webkit-margin-before: 0;
 }
 
+.flash_message {
+    background-color: white;
+    color: #EE6C4D;
+    font-size: 15px;
+    padding: 20px;
+}
+
+.head_links {
+    display: inline-block;
+    float: right;
+}
+
 .balance {
+    display: inline-block;
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.balance p {
+    display: inline;
+}
+
+.mine {
     display: inline-block;
     float: right;
 }
@@ -61,6 +95,19 @@ h2 {
 
 .list_transactions {
     margin: 0 0 40px 0;
+}
+
+.btn-primary {
+    /* border-radius: 8px; */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    /*text-shadow: 1px 1px 1px #272828;*/
+    font-size: 16px;
+    background-color: #EE6C4D;
+    display: inline-block;
+    cursor: pointer;
 }
 
 table {
@@ -76,15 +123,13 @@ table {
 td {
     font-size: 13px;
     line-height: 1.4em;
-    padding: 15px;
+    padding: 10px;
     word-wrap:break-word;
 }
 
 th {
-    align-content: left;
     font-size: 14px;
-    padding: 0 0 7px 14px;
-    text-align: left;
+    padding: 0 0 7px 0;
 }
 
 tr:nth-child(even) {background-color: #F6F8FA;}

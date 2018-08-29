@@ -11,39 +11,54 @@
     <div class="title">
       <h1>Block Miner</h1>
     </div>
-    <div class="balance">
-      Current balance: <%= @blockchain.balance %>
+    <div class="head_links">
+      <div class="balance">
+        <p>Current balance:</p>
+        <%= @blockchain.balance %>
+      </div>
+      <div class="mine">
+        <div class="mine_button_div">
+          <form method="post" action="/block" id="mine_button">
+            <input class='btn btn-primary' type='submit' value='Mine Block'>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
+  <% if flash[:notice] %>
+    <div class="flash_message">
+      <%= styled_flash %>
+    </div>
+  <% end %>
   <div class="content">
     <div class="list_blocks">
       <h2>Latest Blocks</h2>
       <table id="blocks">
         <tr>
-          <th>Block Hash</th>
-          <th>Number of Transactions</th>
-          <th>Previous Block Hash</th>
+          <th id="block_header">Block Hash</th>
+          <th id="block_header">Previous Block Hash</th>
+          <th>Transactions</th>
           <th>Mined</th>
         </tr>
         <% unless @blockchain.blocks.empty? %>
-          <% @blockchain.blocks.each_with_index { |block, index| %>
+          <% @blockchain.blocks.each_with_index do |block, index| %>
             <tr>
               <td>
                 <a href="/transaction/<%= index %>" id="hash_link"><%= block.hash %></a>
               </td>
               <% if index == 0 %>
-                  <td><%= 0 %></td>
-                <% else %>
-                  <td><%= block.transactions.length %></td>
-              <% end %>
-              <% if index == 0 %>
                 <td>N/A</td>
               <% else %>
                 <td><%= block.previous_hash %></td>
               <% end %>
-              <td><%= block.timestamp %></td>
+              <% if index == 0 %>
+                <td id="td_center"><%= 0 %></td>
+              <% else %>
+                <td id="td_center"><%= block.transactions.length %></td>
+              <% end %>
+              <td id="td_center"><%= block.timestamp %></td>
             </tr>
-          <% } %>
+          <% end %>
         <% end %>
       </table>
     </div>
@@ -71,14 +86,6 @@
           <% } %>
         <% end %>
       </table>
-    </div>
-    <div class="mine">
-      <div class="flash_message">
-        <%= styled_flash %>
-      </div>
-      <form method="post" action="/block" id="mine_button">
-        <input class='btn btn-primary' type='submit' value='Mine'>
-      </form>
     </div>
   </div>
   <div class="footer"></div>
