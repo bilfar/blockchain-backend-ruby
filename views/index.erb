@@ -13,8 +13,8 @@
     </div>
     <div class="head_links">
       <div class="balance">
-        <p>Current balance:</p>
-        <%= @blockchain.balance %>
+        <p>Balance:</p>
+        <%= @blockchain.balance %> BKH
       </div>
       <div class="mine">
         <div class="mine_button_div">
@@ -56,7 +56,7 @@
               <% else %>
                 <td id="td_center"><%= block.transactions.length %></td>
               <% end %>
-              <td id="td_center"><%= DateTime.parse(block.timestamp.to_s).strftime("%H:%I:%S") %></td>
+              <td id="td_center"><%= DateTime.parse(block.timestamp.to_s).strftime("%H:%M:%S") %></td>
             </tr>
           <% end %>
         <% end %>
@@ -66,22 +66,22 @@
       <h2>Unverified Transactions</h2>
       <table id="transactions">
         <tr>
-          <th>Transaction Hash</th>
-          <th>Purchaser Address</th>
-          <th>Vendor Address</th>
-          <th>Ticket Information</th>
+          <th id="transaction_list_hash">Transaction Hash</th>
+          <th id="transaction_list_hash">Purchaser Address</th>
+          <th id="transaction_list_hash">Vendor Address</th>
+          <th id="transaction_list_hash">Ticket Information</th>
           <th>Cost</th>
-          <th>Time of Transaction</th>
+          <th>Time</th>
         </tr>
         <% unless @blockchain.unverified_transactions.empty? %>
-          <% @blockchain.unverified_transactions.each { |transaction| %>
+          <% @blockchain.unverified_transactions.reverse.each { |transaction| %>
             <tr>
               <td><%= transaction[:hash] %></td>
               <td><%= transaction[:sender] %></td>
               <td><%= transaction[:receiver] %></td>
               <td><%= transaction[:name] %></td>
-              <td><%= transaction[:value] %></td>
-              <td><%= transaction[:time] %></td>
+              <td id="td_center"><%= transaction[:value] %></td>
+              <td id="td_center"><%= DateTime.parse(transaction[:time].to_s).strftime("%H:%M:%S") %></td>
             </tr>
           <% } %>
         <% end %>
