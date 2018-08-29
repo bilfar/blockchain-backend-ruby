@@ -1,5 +1,7 @@
 # Blockchain Backend (Ruby)
-[![Build Status](https://travis-ci.com/archmagos/blockchain-backend-ruby.svg?branch=development)](https://travis-ci.com/archmagos/blockchain-backend-ruby) [![Maintainability](https://api.codeclimate.com/v1/badges/8fb0dd85e11fc6c6333c/maintainability)](https://codeclimate.com/github/archmagos/blockchain-backend-ruby/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/8fb0dd85e11fc6c6333c/test_coverage)](https://codeclimate.com/github/archmagos/blockchain-backend-ruby/test_coverage)
+[![Build Status](https://travis-ci.org/bilfar/blockchain-backend-ruby.svg?branch=master)](https://travis-ci.org/bilfar/blockchain-backend-ruby)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f89421f12fd5fbc684ac/maintainability)](https://codeclimate.com/github/bilfar/blockchain-backend-ruby/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f89421f12fd5fbc684ac/test_coverage)](https://codeclimate.com/github/bilfar/blockchain-backend-ruby/test_coverage)
 
 A blockchain-based ticketing app that allows users to purchase concert tickets and stores the validated transactions on a blockchain network. Created as part of our final project for the Makers Academy bootcamp during August 2018.
 This repository represents the back-end 'blockchain' element to our project, while the Javascript/React front-end repository [can be found here](https://github.com/jeff1108/blockchain-ticketing-app). Our initial MVP is to set up a 'dummy' blockchain that mimics the way this technology processes and validates transactions. These transactions will then be sent to our 'chain', a basic Postgres database.
