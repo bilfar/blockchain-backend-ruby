@@ -1,0 +1,177 @@
+body {
+    background-color: #E3E7E9;
+    color: #525962;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+a {
+    color: #EE6C4D;
+    text-decoration: none;
+}
+
+h2 {
+    color: #525962;
+    font-size: 17px;
+    padding: 0 15px;
+}
+
+.content {
+    margin: 30px 0 0 0;
+    padding: 0 2% 0 2%;
+    width: 96%;
+}
+
+.header {
+    background-color: #293241;
+    color: white;
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    height: 70px;
+    margin: 0 0 0 0;
+    padding: 0 2% 0 2%;
+    width: 96%;
+}
+
+#block_header {
+    align-content: left;
+    text-align: left;
+    width: 41%;
+}
+
+#solo_block_header {
+    align-content: left;
+    text-align: left;
+    width: 46%;
+}
+
+#td_center {
+    align-content: center;
+    text-align: center;
+}
+
+#transaction_list_hash {
+    align-content: left;
+    text-align: left;
+    width: 21%;
+}
+
+.header h1 {
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+.title {
+    display: inline-block;
+    float: left;
+    padding: 20px 0 0 0;
+}
+
+.title h1 {
+    margin: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-before: 0;
+}
+
+.flash_message {
+    background-color: white;
+    border-bottom: 1.10px solid #D0D5DA;
+    color: #EE6C4D;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    padding: 20px;
+}
+
+.head_links {
+    display: inline-block;
+    float: right;
+}
+
+.balance {
+    display: inline-block;
+    float: left;
+    font-size: 17px;
+    margin: 25px 30px 0 0;
+}
+
+.balance p {
+    display: inline;
+}
+
+.mine {
+    display: inline-block;
+    float: right;
+}
+
+#mine_button {
+    margin: 0;
+    padding: 15px 0 0 0;
+}
+
+#home_button {
+    margin: 0;
+    padding: 15px 0 0 0;
+}
+
+.list_blocks {
+    margin: 0 0 30px 0;
+}
+
+.list_transactions {
+    margin: 0 0 40px 0;
+}
+
+.btn-primary {
+    /* border-radius: 8px; */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    /*text-shadow: 1px 1px 1px #272828;*/
+    font-size: 16px;
+    background-color: #EE6C4D;
+    display: inline-block;
+    cursor: pointer;
+    width: 160px;
+}
+
+.btn-secondary {
+    /* border-radius: 8px; */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    /*text-shadow: 1px 1px 1px #272828;*/
+    font-size: 16px;
+    background-color: #151A23;
+    display: inline-block;
+    cursor: pointer;
+    width: 160px;
+}
+
+table {
+    align-content: left;
+    background-color: white;
+    border-radius: 3px;
+    border: 1.10px solid #D0D5DA;
+    padding: 15px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+td {
+    font-size: 13px;
+    line-height: 1.4em;
+    padding: 10px;
+    word-wrap:break-word;
+}
+
+th {
+    font-size: 14px;
+    padding: 0 0 7px 0;
+}
+
+tr:nth-child(even) {background-color: #F2F2F2;}
