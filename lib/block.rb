@@ -14,23 +14,23 @@ class Block
   end
 
   def self.genesis
-    Block.new(Block.first_genesis_data, '0000')
+    Block.new(Block.first_genesis_data, 'N/A')
   end
 
   def self.first_genesis_data
     [
-      { sender: '0',
-        receiver: '0',
-        name: 'genesis block',
-        value: '0',
-        hash: '0',
-        time: '0' }
+      { sender: 'Genesis',
+        receiver: 'Genesis',
+        name: 'Genesis',
+        value: 'Genesis',
+        hash: 'Genesis',
+        time: Time.now }
     ]
   end
 
   private
 
-  def calculate_hash(prefix = '0')
+  def calculate_hash(prefix = '00')
     nonce = 0
     loop do
       hash = generate_hash(nonce)
