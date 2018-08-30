@@ -22,7 +22,7 @@ class BlockchainApp < Sinatra::Base
                        puts 'No transactions to verify!'
                        'No transactions to verify!'
                      else
-                       'Blocks mined successfully'
+                       'Block mined successfully'
                      end
     redirect '/'
   end
@@ -35,6 +35,7 @@ class BlockchainApp < Sinatra::Base
 
   get '/transaction/:index' do
     index = params[:index].to_i
+    @blockchain = settings.blockchain
     @block = settings.blockchain.blocks[index]
     erb(:transaction)
   end

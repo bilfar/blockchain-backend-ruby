@@ -20,7 +20,7 @@ end
 feature 'balance' do
   scenario 'displays miner balance' do
     visit('/')
-    expect(page).to have_content('Current balance:')
+    expect(page).to have_content('Balance:')
   end
 end
 
@@ -39,6 +39,6 @@ end
 feature 'blocks hash' do
   scenario 'has a block hash button' do
     visit('/')
-    expect(page).to have_button('hash_button')
+    expect(page).to have_link('hash_link')
   end
 end
